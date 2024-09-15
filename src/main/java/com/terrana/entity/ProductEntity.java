@@ -10,6 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -32,6 +33,7 @@ public class ProductEntity {
   private long id;
 
   @Column(name = "name", nullable = false)
+  @NotBlank(message = "Name cannot be empty")
   private String name;
 
   @Column(name = "description")
@@ -45,6 +47,12 @@ public class ProductEntity {
 
   @Column(name = "discount")
   private int discount;
+
+  @Column(name = "in_stock")
+  private boolean inStock;
+
+  @Column(name = "tags")
+  private String tags;
 
   @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(

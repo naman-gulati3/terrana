@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,12 +26,13 @@ public class CategoryEntity {
   private int id;
 
   @Column(name = "name", nullable = false)
+  @NotBlank(message = "Name cannot be empty")
   private String name;
 
   @Column(name = "description")
   private String description;
 
-  @Column(name = "created_at", nullable = false)
+  @Column(name = "created_at")
   private LocalDateTime createdAt;
 //
 //  @OneToMany(fetch = FetchType.LAZY)

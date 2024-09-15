@@ -1,6 +1,6 @@
 package com.terrana.service;
 
-import com.terrana.dto.Product;
+import com.terrana.dto.ProductRequestDTO;
 import com.terrana.entity.CategoryEntity;
 import com.terrana.entity.ProductEntity;
 import com.terrana.repository.CategoryRepository;
@@ -29,22 +29,22 @@ public class ProductService {
   }
 
   @Transactional
-  public void createProduct(Product product) {
+  public void createProduct(ProductRequestDTO productRequestDTO) {
     ProductEntity productEntity = new ProductEntity();
-    productEntity.setName(product.getName());
-    productEntity.setDescription(product.getDescription());
-    productEntity.setCost(product.getCost());
-    productEntity.setDiscount(product.getDiscount());
+    productEntity.setName(productRequestDTO.getName());
+    productEntity.setDescription(productRequestDTO.getDescription());
+    productEntity.setCost(productRequestDTO.getCost());
+    productEntity.setDiscount(productRequestDTO.getDiscount());
 
     // Save product
     productRepository.save(productEntity);
 
     Optional<CategoryEntity> categoryOpt = categoryRepository.findById(
-        product.getCategoryId());
+        productRequestDTO.getCategoryId());
 
     if (categoryOpt.isEmpty()) {
       throw new IllegalArgumentException(
-          "Category id %s does not exist".formatted(product.getCategoryId()));
+          "Category id %s does not exist".formatted(productRequestDTO.getCategoryId()));
     }
 
     productEntity.setCategoryEntity(List.of(categoryOpt.get()));

@@ -6,4 +6,4 @@ CREATE TABLE IF NOT EXISTS category
   created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT now()
 );
 
-CREATE INDEX IF NOT EXISTS category_name_idx ON category(name);
+CREATE UNIQUE INDEX ON category(name);

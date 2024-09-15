@@ -4,8 +4,10 @@ CREATE TABLE IF NOT EXISTS products
   name VARCHAR NOT NULL,
   cost real NOT NULL,
   discount int,
+  in_stock BOOLEAN DEFAULT FALSE,
+  tags VARCHAR, -- normalize later if needed --
   description VARCHAR,
   created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT now()
 );
 
-CREATE INDEX IF NOT EXISTS products_name_idx ON products(name);
+CREATE UNIQUE INDEX ON products(name);
