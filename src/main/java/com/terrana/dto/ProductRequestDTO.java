@@ -17,6 +17,7 @@ import lombok.Setter;
 public class ProductRequestDTO extends Product implements Serializable {
 
   private int categoryId;
+  private int quantity;
 
   // TODO: move to some util
   public static ProductEntity toEntity(ProductRequestDTO productRequestDTO) {

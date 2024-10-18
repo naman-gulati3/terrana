@@ -7,6 +7,9 @@ CREATE TABLE IF NOT EXISTS products
   in_stock BOOLEAN DEFAULT FALSE,
   tags VARCHAR, -- normalize later if needed --
   description VARCHAR,
+  image_name VARCHAR,
+  image_type VARCHAR,
+  image bytea,
   created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT now()
 );
 

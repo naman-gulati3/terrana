@@ -54,6 +54,12 @@ public class ProductEntity {
   @Column(name = "tags")
   private String tags;
 
+  private String imageName;
+
+  private String imageType;
+
+  private byte[] image;
+
   @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(
       name = "product_category",
